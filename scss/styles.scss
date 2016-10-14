@@ -1,3 +1,77 @@
+body {
+  font-family: monospace;
+  background: #d3dcea;
+}
+
+.well {
+  background: white;
+}
+
+/* ------- USER INFO -------- */
+
+.header {
+  background: #4e6993;
+  color: white;
+
+  .container {
+    padding-top: 75px;
+    padding-bottom: 15px;
+    text-align: center;
+  }
+
+  form {
+    margin-top: 15px;
+  }
+
+}
+
+.btn-default, .btn-default:focus, .btn-default:active {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.btn-default:hover {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  text-shadow: 1px 1px 2px black;
+  box-shadow: 1px 1px 2px black;
+}
+
+#user-info {
+  padding-top: 20px;
+}
+
+#user-avatar {
+  border-radius: 10%;
+  border: 1px solid #4e6993;
+  box-shadow: 1px 1px 5px #4e6993;
+}
+
+#user {
+  font-size: 75%;
+}
+
+/* ------- INSTRUCTIONAL TEXT -------- */
+
+#load-text, #error {
+  margin-top: 10%;
+  text-align: center;
+}
+
 #error, #result {
   display: none;
+}
+
+@media only screen and (min-width: 992px) {
+  .header {
+    h1 {
+      float: left;
+    }
+
+    form {
+      float: right;
+    }
+  }
 }

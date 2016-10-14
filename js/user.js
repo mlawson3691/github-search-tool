@@ -5,13 +5,25 @@ function User(username) {
   this.repos = [];
 }
 
-User.prototype.getRepos = function(displayUser, displayRepos) {
+User.prototype.getUser = function(displayFunction) {
   var _this = this;
-  $.get('https://api.github.com/users/' + _this.username + '/repos?sort=created&access_token=' + apiKey).then(function(response) {
-    // console.log(response);
+  $.get('https://api.github.com/users/' + _this.username + '?sort=updated&access_token=' + apiKey).then(function(response) {
+    console.log(response);
 
-    displayUser(response["0"].owner);
-    displayRepos(response);
+    displayFunction(response);
+
+  }).fail(function(error) {
+    console.log(error.responseJSON.message);
+    $('#error').show();
+    $('#result').hide();
+  });
+};
+
+User.prototype.getRepos = function(displayFunction) {
+  var _this = this;
+  $.get('https://api.github.com/users/' + _this.username + '/repos?sort=updated&access_token=' + apiKey).then(function(response) {
+    console.log(response);
+    displayFunction(response);
 
   }).fail(function(error) {
     console.log(error.responseJSON.message);
