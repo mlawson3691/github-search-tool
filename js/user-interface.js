@@ -39,12 +39,7 @@ $(document).ready(function() {
     var username = $('#username').val();
     $('#username').val('');
     var newUser = new User(username);
-    if (apiKey) {
-      newUser.getRepos(displayRepos);
-      newUser.getUser(displayUser);
-    } else {
-      newUser.getReposNoKey(displayRepos);
-      newUser.getUserNoKey(displayUser);
-    }
+    newUser.getRepos(displayRepos);
+    newUser.getUser(displayUser);
   });
 });
