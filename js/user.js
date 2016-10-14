@@ -9,11 +9,19 @@ User.prototype.getRepos = function() {
   var _this = this;
   $.get('https://api.github.com/users/' + _this.username + '/repos?sort=created&access_token=' + apiKey).then(function(response) {
     console.log(response);
-    $('#repos').empty();
-    response.forEach(function(repo) {
-      $('#repos').append('<li><a href="' + repo.svn_url + '" target="_blank"><h4>' + repo.name + '</h4></a></li>');
+    console.log(response.length);
+    $('#repos1').empty();
+    $('#repos2').empty();
+    var id;
+    response.forEach(function(repo, i) {
+      if (i < response.length/2) {
+        id = '#repos1';
+      } else {
+        id = '#repos2';
+      }
+      $(id).append('<div class="well"><a href="' + repo.svn_url + '" target="_blank"><h4>' + repo.name + '</h4></a></div>');
       if (repo.description) {
-        $('li').last().append('<p>' + repo.description + '</p>');
+        $('.well').last().append('<p>' + repo.description + '</p>');
       }
     });
     $('#result').show();
