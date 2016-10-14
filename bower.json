@@ -1,0 +1,17 @@
+{
+  "name": "git-search",
+  "description": "",
+  "main": "gulpfile.js",
+  "authors": [
+    "Mark Lawson <mlawson3691@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
