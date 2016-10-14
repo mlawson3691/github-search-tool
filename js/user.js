@@ -6,12 +6,8 @@ function User(username) {
 }
 
 User.prototype.getUser = function(displayFunction) {
-  var _this = this;
-  $.get('https://api.github.com/users/' + _this.username + '?sort=updated&access_token=' + apiKey).then(function(response) {
-    console.log(response);
-
+  $.get('https://api.github.com/users/' + this.username + '?sort=updated&access_token=' + apiKey).then(function(response) {
     displayFunction(response);
-
   }).fail(function(error) {
     console.log(error.responseJSON.message);
     $('#error').show();
@@ -20,11 +16,30 @@ User.prototype.getUser = function(displayFunction) {
 };
 
 User.prototype.getRepos = function(displayFunction) {
-  var _this = this;
-  $.get('https://api.github.com/users/' + _this.username + '/repos?sort=updated&access_token=' + apiKey).then(function(response) {
-    console.log(response);
+  $.get('https://api.github.com/users/' + this.username + '/repos?sort=updated&access_token=' + apiKey).then(function(response) {
     displayFunction(response);
+  }).fail(function(error) {
+    console.log(error.responseJSON.message);
+    $('#error').show();
+    $('#result').hide();
+  });
+};
 
+// handle API calls without a key
+
+User.prototype.getUserNoKey = function(displayFunction) {
+  $.get('https://api.github.com/users/' + this.username + '?sort=updated').then(function(response) {
+    displayFunction(response);
+  }).fail(function(error) {
+    console.log(error.responseJSON.message);
+    $('#error').show();
+    $('#result').hide();
+  });
+};
+
+User.prototype.getReposNoKey = function(displayFunction) {
+  $.get('https://api.github.com/users/' + this.username + '/repos?sort=updated').then(function(response) {
+    displayFunction(response);
   }).fail(function(error) {
     console.log(error.responseJSON.message);
     $('#error').show();

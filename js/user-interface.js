@@ -1,4 +1,5 @@
 var User = require('./../js/user.js').userModule;
+var apiKey = require('./../.env').apiKey;
 
 var displayUser = function(user) {
   $('#user-avatar').attr('src', user.avatar_url);
@@ -38,7 +39,12 @@ $(document).ready(function() {
     var username = $('#username').val();
     $('#username').val('');
     var newUser = new User(username);
-    newUser.getRepos(displayRepos);
-    newUser.getUser(displayUser);
+    if (apiKey) {
+      newUser.getRepos(displayRepos);
+      newUser.getUser(displayUser);
+    } else {
+      newUser.getReposNoKey(displayRepos);
+      newUser.getUserNoKey(displayUser);
+    }
   });
 });
