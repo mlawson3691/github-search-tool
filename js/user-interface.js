@@ -7,6 +7,5 @@ $(document).ready(function() {
     $('#user').text(username);
     var newUser = new User(username);
     newUser.getRepos();
-    $('div.hidden').removeClass('hidden');
   });
 });

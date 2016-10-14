@@ -15,14 +15,13 @@ User.prototype.getRepos = function() {
         if (repo.description) {
           $('li').last().append('<p>' + repo.description + '</p>');
         }
+        $('div.hidden').removeClass('hidden');
       });
-    } else {
-      $('div.hidden').text('That username does not exist.');
-      $('div.hidden').removeClass('hidden');
     }
   }).fail(function(error) {
-    console.log('error.responseJSON.message');
-    console.log(error);
+    console.log(error.responseJSON.message);
+    $('#hidden-div').html('That username does not exist. Try again!');
+    $('div.hidden').removeClass('hidden');
   });
 };
 
