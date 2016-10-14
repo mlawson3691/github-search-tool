@@ -4,6 +4,7 @@ $(document).ready(function() {
   $('#submit').click(function(event) {
     event.preventDefault();
     var username = $('#username').val();
+    $('#username').val('');
     $('#user').text(username);
     var newUser = new User(username);
     newUser.getRepos();

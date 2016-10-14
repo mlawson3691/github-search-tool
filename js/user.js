@@ -9,6 +9,7 @@ User.prototype.getRepos = function() {
   var _this = this;
   $.get('https://api.github.com/users/' + _this.username + '/repos?sort=created&access_token=' + apiKey).then(function(response) {
     console.log(response);
+    $('#repos').empty();
     response.forEach(function(repo) {
       $('#repos').append('<li><a href="' + repo.svn_url + '" target="_blank"><h4>' + repo.name + '</h4></a></li>');
       if (repo.description) {
