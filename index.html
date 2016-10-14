@@ -11,11 +11,17 @@
 <body>
   <div class='container'>
     <h1>GitHub User Finder</h1>
-    <form>
+    <form class='form-inline'>
       <label for='username'>Username:</label>
-      <input id='username' type='text' class='form-control'>
+      <input id='username' type='text' class='form-control' required>
       <button id='submit' type='submit' class='btn btn-primary'>Search</button>
     </form>
+    <hr>
+    <div class='hidden'>
+      <h2 id='user'>'s Repositories:</h2>
+      <ul id='repos'>
+      </ul>
+    </div>
   </div>
 </body>
 </html>
