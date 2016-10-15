@@ -1,5 +1,4 @@
 var User = require('./../js/user.js').userModule;
-var apiKey = require('./../.env').apiKey;
 
 var displayUser = function(user) {
   $('#user-avatar').attr('src', user.avatar_url);
