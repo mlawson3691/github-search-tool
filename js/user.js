@@ -5,30 +5,25 @@ function User(username) {
   this.repos = [];
 }
 
-User.prototype.getUser = function(displayFunction) {
+User.prototype.getUser = function(displayUser, displayRepos) {
   if (apiKey) {
-    var url = 'https://api.github.com/users/' + this.username + '?sort=updated&access_token=' + apiKey;
+    var urlUser = 'https://api.github.com/users/' + this.username + '?sort=updated&access_token=' + apiKey;
+    var urlRepos = 'https://api.github.com/users/' + this.username + '/repos?sort=updated&access_token=' + apiKey;
   } else {
-    var url = 'https://api.github.com/users/' + this.username + '?sort=updated';
+    var urlUser = 'https://api.github.com/users/' + this.username + '?sort=updated';
+    var urlRepos = 'https://api.github.com/users/' + this.username + '/repos?sort=updated';
   }
 
-  $.get(url).then(function(response) {
-    displayFunction(response);
+  $.get(urlUser).then(function(response) {
+    displayUser(response);
   }).fail(function(error) {
     console.log(error.responseJSON.message);
     $('#error').show();
     $('#result').hide();
   });
-};
 
-User.prototype.getRepos = function(displayFunction) {
-  if (apiKey) {
-    var url = 'https://api.github.com/users/' + this.username + '/repos?sort=updated&access_token=' + apiKey;
-  } else {
-    var url = 'https://api.github.com/users/' + this.username + '/repos?sort=updated';
-  }
-  $.get(url).then(function(response) {
-    displayFunction(response);
+  $.get(urlRepos).then(function(response) {
+    displayRepos(response);
   }).fail(function(error) {
     console.log(error.responseJSON.message);
     $('#error').show();

@@ -32,14 +32,12 @@ var displayRepos = function(repos) {
 };
 
 $(document).ready(function() {
-
   $('#submit').click(function(event) {
     event.preventDefault();
     $('#load-text').hide();
     var username = $('#username').val();
     $('#username').val('');
     var newUser = new User(username);
-    newUser.getRepos(displayRepos);
-    newUser.getUser(displayUser);
+    newUser.getUser(displayUser, displayRepos);
   });
 });
