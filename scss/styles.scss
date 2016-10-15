@@ -9,6 +9,10 @@ body {
 
 /* ------- USER INFO -------- */
 
+hr {
+  margin: 10px 0;
+}
+
 .header {
   background: #4e6993;
   color: white;
@@ -21,6 +25,10 @@ body {
 
   form {
     margin-top: 15px;
+  }
+
+  .form-control {
+    text-align: center;
   }
 
 }
@@ -64,6 +72,18 @@ body {
   display: none;
 }
 
+@media only screen and (max-width: 768px) {
+  body {
+    text-align: center;
+  }
+
+  .img-responsive {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+}
+
 @media only screen and (min-width: 992px) {
   .header {
     h1 {
@@ -72,6 +92,10 @@ body {
 
     form {
       float: right;
+    }
+
+    .form-control {
+      text-align: left;
     }
   }
 }

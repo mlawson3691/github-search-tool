@@ -15,16 +15,19 @@ var displayUser = function(user) {
 var displayRepos = function(repos) {
   $('#repos1').empty();
   $('#repos2').empty();
+  $('#repos3').empty();
   var id;
   repos.forEach(function(repo, i) {
-    if (i < repos.length/2) {
+    if (i < repos.length/3) {
       id = '#repos1';
-    } else {
+    } else if (i < repos.length/3*2){
       id = '#repos2';
+    } else {
+      id = '#repos3';
     }
     $(id).append('<div class="well"><a href="' + repo.svn_url + '" target="_blank"><h4>' + repo.name + '</h4></a><p>Last updated: ' + moment(repo.created_at).format('MMM D, YYYY') + '</p></div>');
     if (repo.description) {
-      $('.well').last().append('<p>' + repo.description + '</p>');
+      $('.well').last().append('<hr><p>' + repo.description + '</p>');
     }
   });
   $('#result').show();
