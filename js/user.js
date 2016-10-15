@@ -2,7 +2,6 @@ var apiKey = require('./../.env').apiKey;
 
 function User(username) {
   this.username = username;
-  this.repos = [];
 }
 
 User.prototype.getUser = function(displayUser, displayRepos) {
